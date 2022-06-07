@@ -1,4 +1,5 @@
 exit 0
+# This is summarized notes of what I learnt in day 2
 
 # Create namespace "bggns"
 kubectl create namespace bggns
@@ -21,6 +22,7 @@ kubectl get cm,secret,all -nbggns -owide
 
 # Example of viewing logs in a specified pod
 kubectl logs <pod_name> -nbggns
+
 # Delete DB deployment
 kubectl delete -f db-deploy.yaml -nbggns 
 
