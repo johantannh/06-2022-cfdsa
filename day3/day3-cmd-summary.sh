@@ -42,3 +42,7 @@ watch kubectl get all -nworkshop03
 # Go to nip.io to get fake DNS for testing the ingress controller
 # i.e. bgg-146.190.5.187.nip.io
 
+# Install Ingress Controller so that IngressClass can work
+helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --create-namespace
+
+
