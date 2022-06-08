@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-vol
+  labels:
+    name: my-vol
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests: 
+      storage: 1Gi
+  storageClassName: do-block-storage
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-cm
+data:
+  hosts: |
+    127.0.0.1	localhost
+    255.255.255.255	broadcasthost
+    ::1 localhost
+
+  readme.txt: please read this file

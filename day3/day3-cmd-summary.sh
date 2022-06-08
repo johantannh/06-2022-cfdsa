@@ -36,4 +36,9 @@ watch kubectl get all,cm,secret -n sealed-secrets
 kubectl apply -k . -oyaml --dry-run=client
 # kubectl apply -k . -oyaml --dry-run=server
 
-# Go to nip.io to get fake DNS for testing
+# To watch changes for a particular item in kubernetes
+watch kubectl get all -nworkshop03
+
+# Go to nip.io to get fake DNS for testing the ingress controller
+# i.e. bgg-146.190.5.187.nip.io
+

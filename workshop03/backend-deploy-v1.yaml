@@ -5,7 +5,8 @@ metadata:
   labels:
     name: bggappv1-svc
 spec: 
-  type: LoadBalancer
+  type: ClusterIP
+  # type: LoadBalancer
   selector:
     name: bggappv1-po
   ports:
