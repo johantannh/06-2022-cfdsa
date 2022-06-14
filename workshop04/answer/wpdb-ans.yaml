@@ -20,7 +20,7 @@ kind: Service
 metadata:
   name: wpdb-master-svc 
   labels:
-    app: wp 
+    app: wp
     name: wpdb-master-svc 
 spec:
   type: ClusterIP
@@ -80,26 +80,26 @@ spec:
           mountPath: /var/lib/mysql
         
 ---
-# apiVersion: networking.k8s.io/v1
-# kind: NetworkPolicy 
-# metadata:
-#   name: wpdb-netpol
-#   labels:
-#     app: wp 
-#     name: wpdb-netpol 
-# spec:
-#   podSelector:
-#     matchLabels:
-#       app: wp 
-#       name: wpdb-pod
-#   policyTypes:
-#   - Ingress
-#   ingress:
-#   - from:
-#     - podSelector:
-#         matchLabels:
-#           app: wp
-#           name: wpapp-pod
-#     ports:
-#     - port: 3306
-#       protocol: TCP
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy 
+metadata:
+  name: wpdb-netpol
+  labels:
+    app: wp 
+    name: wpdb-netpol 
+spec:
+  podSelector:
+    matchLabels:
+      app: wp 
+      name: wpdb-pod
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: wp
+          name: wpapp-pod
+    ports:
+    - port: 3306
+      protocol: TCP

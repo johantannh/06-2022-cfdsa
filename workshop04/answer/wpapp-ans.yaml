@@ -4,7 +4,7 @@ kind: Deployment
 metadata: 
   name: wpapp-deploy 
   labels: 
-    app: wp 
+    app: wp
     name: wpapp-deploy 
 spec: 
   replicas: 1
@@ -40,38 +40,38 @@ metadata:
     app: wp
     name: wpapp-svc
 spec:
-  # type: ClusterIP 
-  type: LoadBalancer 
+  type: ClusterIP 
   selector:
-    app: wp 
+    app: wp
     name: wpapp-pod
   ports:
   - port: 80 
     targetPort: 80
 
 --- 
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress 
-# metadata:
-#   name: wpapp-ing 
-#   labels:
-#     app: wp 
-#     name: wpapp-ing 
-# spec:
-#   ingressClassName: nginx 
-#   rules:
-#   - host: tenant-146-190-7-65.nip.io
-#     http: 
-#       paths: 
-#       - path: /
-#         pathType: Prefix 
-#         backend:
-#           service: 
-#             name: wpapp-svc
-#             port: 
-#               number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata:
+  name: wpapp-ing 
+  labels:
+    app: wp 
+    name: wpapp-ing 
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: tenant-146-190-7-65.nip.io
+    http: 
+      paths: 
+      - path: /
+        pathType: Prefix 
+        backend:
+          service: 
+            name: wpapp-svc
+            port: 
+              number: 80
 
 ---
+# Something here is causing the nginx to get error 504... 
 # apiVersion: networking.k8s.io/v1
 # kind: NetworkPolicy
 # metadata:
